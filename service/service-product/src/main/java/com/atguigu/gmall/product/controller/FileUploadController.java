@@ -21,7 +21,7 @@ public class FileUploadController {
     @RequestMapping("fileUpload")
     public Result fileUpload(@RequestParam("file") MultipartFile multipartFile) throws Exception {
 
-        String url = "http://192.168.222.2:8080";
+        String url = "http://192.168.25.92";
 
         String path = TestFdfs.class.getClassLoader().getResource("tracker.conf").getPath();
 

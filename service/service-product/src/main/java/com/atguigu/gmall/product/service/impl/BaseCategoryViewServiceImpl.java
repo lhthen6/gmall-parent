@@ -17,4 +17,5 @@ public class BaseCategoryViewServiceImpl implements BaseCategoryViewService {
         BaseCategoryView baseCategoryView = baseCategoryViewMapper.selectById(category3Id);
         return baseCategoryView;
     }
+
 }

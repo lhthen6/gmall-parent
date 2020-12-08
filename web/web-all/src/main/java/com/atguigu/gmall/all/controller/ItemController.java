@@ -26,11 +26,6 @@ public class ItemController {
         return "item/index";
     }
 
-    @RequestMapping("/")
-    public String index(){
-        return "index";
-    }
-
     @RequestMapping("test")
     public String test(Model model){
 

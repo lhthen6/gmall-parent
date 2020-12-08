@@ -1,9 +1,11 @@
 package com.atguigu.gmall.product.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.atguigu.gmall.model.product.BaseCategoryView;
 import com.atguigu.gmall.model.product.SkuInfo;
 import com.atguigu.gmall.model.product.SpuSaleAttr;
 import com.atguigu.gmall.product.service.BaseCategoryViewService;
+import com.atguigu.gmall.product.service.CategoryService;
 import com.atguigu.gmall.product.service.SkuInfoService;
 import com.atguigu.gmall.product.service.SpuSaleAttrService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("api/product")
@@ -24,6 +27,20 @@ public class ProductApiController {
     private SpuSaleAttrService spuSaleAttrService;
     @Autowired
     private BaseCategoryViewService baseCategoryViewService;
+    @Autowired
+    private CategoryService categoryService;
+
+    @RequestMapping("getBaseCategoryList")
+    List<JSONObject> getBaseCategoryList() {
+        List<JSONObject> list = categoryService.getBaseCategoryList();
+        return list;
+    }
+
+    @RequestMapping("getSaleAttrValuesBySpuId/{spuId}")
+    Map<String, Long> getSaleAttrValuesBySpuId(@PathVariable Long spuId) {
+        Map<String, Long> map = spuSaleAttrService.getSaleAttrValuesBySpuId(spuId);
+        return map;
+    }
 
     @RequestMapping("getPrice/{skuId}")
     public BigDecimal getPrice(@PathVariable Long skuId) {
@@ -38,9 +55,9 @@ public class ProductApiController {
         return skuInfo;
     }
 
-    @RequestMapping("getSpuSaleAttrBySpuId/{spuId}")
-    public List<SpuSaleAttr> getSpuSaleAttrBySpuId(@PathVariable("spuId") Long spuId) {
-        List<SpuSaleAttr> spuSaleAttrList = spuSaleAttrService.getSpuSaleAttrList(spuId);
+    @RequestMapping("getSpuSaleAttrBySpuId/{spuId}/{skuId}")
+    public List<SpuSaleAttr> getSpuSaleAttrBySpuId(@PathVariable("spuId") Long spuId, @PathVariable("skuId") Long skuId) {
+        List<SpuSaleAttr> spuSaleAttrList = spuSaleAttrService.getSpuSaleAttrListCheckBySku(spuId, skuId);
         return spuSaleAttrList;
     }
 

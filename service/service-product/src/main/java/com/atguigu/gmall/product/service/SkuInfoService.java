@@ -17,4 +17,5 @@ public interface SkuInfoService {
     BigDecimal getPrice(Long skuId);
 
     SkuInfo getSkuInfoBySkuId(Long skuId);
+
 }

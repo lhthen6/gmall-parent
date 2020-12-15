@@ -7,6 +7,7 @@
         <module>service-product</module>
         <module>service-item</module>
         <module>service-list</module>
+        <module>service-cart</module>
     </modules>
 
     <parent>

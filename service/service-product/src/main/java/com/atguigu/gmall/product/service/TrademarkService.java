@@ -9,4 +9,6 @@ public interface TrademarkService {
     List<BaseTrademark> getTrademarkList();
 
     IPage<BaseTrademark> getBaseTrademark(Long pageNo, Long pageSize);
+
+    BaseTrademark getTrademarkById(Long tmId);
 }

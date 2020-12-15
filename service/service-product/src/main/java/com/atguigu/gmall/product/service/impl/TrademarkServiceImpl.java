@@ -28,4 +28,9 @@ public class TrademarkServiceImpl implements TrademarkService {
         IPage<BaseTrademark> baseTrademarkIPage = trademarkMapper.selectPage(baseTrademarkPage, null);
         return baseTrademarkIPage;
     }
+
+    @Override
+    public BaseTrademark getTrademarkById(Long tmId) {
+        return trademarkMapper.selectById(tmId);
+    }
 }

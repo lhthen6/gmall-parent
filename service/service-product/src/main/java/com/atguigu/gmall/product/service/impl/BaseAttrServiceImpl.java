@@ -1,5 +1,6 @@
 package com.atguigu.gmall.product.service.impl;
 
+import com.atguigu.gmall.model.list.SearchAttr;
 import com.atguigu.gmall.model.product.BaseAttrInfo;
 import com.atguigu.gmall.model.product.BaseAttrValue;
 import com.atguigu.gmall.product.mapper.BaseAttrInfoMapper;
@@ -55,6 +56,13 @@ public class BaseAttrServiceImpl implements BaseAttrService {
         queryWrapper.eq("attr_id", attrId);
         List<BaseAttrValue> baseAttrValues = baseAttrValueMapper.selectList(queryWrapper);
         return baseAttrValues;
+    }
+
+    @Override
+    public List<SearchAttr> getSearchAttrList(Long skuId) {
+        List<SearchAttr> searchAttrs = baseAttrInfoMapper.selectSearchAttrList(skuId);
+        System.out.println(searchAttrs+"hzk");
+        return searchAttrs;
     }
 
 }

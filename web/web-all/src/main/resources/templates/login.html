@@ -120,9 +120,10 @@
                         auth.setToken(response.data.data.token)
                         auth.setUserInfo(JSON.stringify(response.data.data))
 
+						//alert(response.data.data.token);
                         console.log("originUrl:"+this.originUrl);
                         if(this.originUrl == ''){
-                            window.location.href="http://www.gmall.com/index.html"
+                            window.location.href="http://www.gmall.com/"
                             return ;
                         } else {
                             window.location.href = decodeURIComponent(this.originUrl)

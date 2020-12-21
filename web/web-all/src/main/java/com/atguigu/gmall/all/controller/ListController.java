@@ -61,6 +61,7 @@ public class ListController {
         if (!StringUtils.isEmpty(searchParam.getOrder())) {
             Map<String, String> orderMap = new HashMap<>();
             orderMap.put("type", searchParam.getOrder().split(":")[0]);
+            orderMap.put("sort", searchParam.getOrder().split(":")[1]);
             model.addAttribute("orderMap", orderMap);
         }
 

@@ -13,7 +13,7 @@ var cart = {
   // 我的购物车
   cartList() {
     return request({
-      url: 'http://api.gmall.com:8201/api/cart/cartList', //this.api_name +
+      url: this.api_name + '/cartList',
       method: 'get'
     })
   },

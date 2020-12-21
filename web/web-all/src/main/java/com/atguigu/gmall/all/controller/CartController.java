@@ -17,13 +17,11 @@ public class CartController {
 
         cartFeignClient.addCart(cartInfo);
 
-        return "redirect:/cart/addCart.html?skuNum=" + cartInfo.getSkuNum();
+        return "redirect:http://cart.gmall.com/cart/addCart.html?skuId=" + skuId + "&skuNum=" + skuNum;
     }
 
-    @RequestMapping("cart/cart.html")
+    @RequestMapping("cart.html")
     public String cartList() {
-
-        System.out.println("fuck");
 
         return "cart/index";
     }

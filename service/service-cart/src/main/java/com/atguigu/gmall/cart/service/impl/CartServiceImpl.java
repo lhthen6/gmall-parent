@@ -59,7 +59,6 @@ public class CartServiceImpl implements CartService {
         // 同步缓存
         redisTemplate.opsForHash().put(RedisConst.USER_KEY_PREFIX + cartInfo.getUserId() + RedisConst.USER_CART_KEY_SUFFIX, skuId + "", cartInfo);
 
-
     }
 
     @Override
@@ -67,7 +66,7 @@ public class CartServiceImpl implements CartService {
         // 先取缓存数据
         List<CartInfo> cartInfos = (List<CartInfo>) redisTemplate.opsForHash().values("user:" + cartInfo.getUserId() + ":cart");
 
-        if (null == cartInfos && cartInfos.size() < 0) {
+        if (null == cartInfos || cartInfos.size() < 0) {
             HashMap<String, Object> cacheMap = new HashMap<>();
             // 查询数据库
             QueryWrapper<CartInfo> wrapper = new QueryWrapper<>();
